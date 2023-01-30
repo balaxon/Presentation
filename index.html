@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Lodash</section>
+				<section>
+					<section>What is Lodash?</section>
+					<section>Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm.</section>
+				</section>
+				<section>
+					<section>Why Lodash?</section>
+					<section>Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.</section>
+					<section>
+						Lodash’s modular methods are great for:
+						<ul>
+							<li>Iterating arrays, objects, & strings</li>
+							<li>Manipulating & testing values</li>
+							<li>Creating composite functions</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					Lodash is a JavaScript library that helps programmers write more concise and maintainable JavaScript.
+					<br>It can be broken down into several main areas:
+				</section>
+				<section>
+					<section>
+						Utilities: 
+						<br>For simplifying common programming tasks such as determining type as well as simplifying math operations.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>times</li>
+							<li>range</li>
+						</ul>
+					</section>
+					<section>
+						Times:<br>
+						Invokes the iteratee n times, returning an array of the results of each invocation. The iteratee is invoked with one argument; (index).
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.times(3, String);
+								// => ['0', '1', '2']
+	
+								_.times(4, _.constant(0));
+								// => [0, 0, 0, 0]
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Range:<br>
+						Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end. A step of -1 is used if a negative start is specified without an end or step. If end is not specified, it's set to start with start then set to 0.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.range(4);
+								// => [0, 1, 2, 3]
+
+								_.range(-4);
+								// => [0, -1, -2, -3]
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						Function:
+						<br>Simplifying binding, decorating, constraining, throttling, debouncing, currying, and changing the pointer.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>ary</li>
+							<li>bind</li>
+						</ul>
+					</section>
+					<section>
+						Ary:<br>
+						Creates a function that invokes func, with up to n arguments, ignoring any additional arguments.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.map(['6', '8', '10'], _.ary(parseInt, 1));
+								// => [6, 8, 10]
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Bind:<br>
+						Creates a function that invokes func with the this binding of thisArg and partials prepended to the arguments it receives.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								function greet(greeting, punctuation) {
+									return greeting + ' ' + this.user + punctuation;
+								}
+								 
+								var object = { 'user': 'fred' };
+								 
+								var bound = _.bind(greet, object, 'hi');
+								bound('!');
+								// => 'hi fred!'
+								 
+								// Bound with placeholders.
+								var bound = _.bind(greet, object, _, '!');
+								bound('hi');
+								// => 'hi fred!'
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						String:
+						<br>Conversion functions for performing basic string operations, such as trimming, converting to uppercase, camel case, etc.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>camelCase</li>
+							<li>lowerCase</li>
+						</ul>
+					</section>
+					<section>
+						CamelCase:<br>
+						Converts string to camel case.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.camelCase('Foo Bar');
+								// => 'fooBar'
+
+								_.camelCase('--foo-bar--');
+								// => 'fooBar'
+
+								_.camelCase('__FOO_BAR__');
+								// => 'fooBar'
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						LowerCase:<br>
+						Converts string, as space separated words, to lower case.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.lowerCase('--Foo-Bar--');
+								// => 'foo bar'
+
+								_.lowerCase('fooBar');
+								// => 'foo bar'
+
+								_.lowerCase('__FOO_BAR__');
+								// => 'foo bar'
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						Array:
+						<br>Creating, splitting, combining, modifying, and compressing
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>compact</li>
+							<li>drop</li>
+						</ul>
+					</section>
+					<section>
+						Compact:<br>
+						Creates an array with all falsey values removed. The values false, null, 0, "", undefined, and NaN are falsey.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.compact([0, 1, false, 2, '', 3]);
+								// => [1, 2, 3]
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Drop:<br>
+						Creates a slice of array with n elements dropped from the beginning.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.drop([1, 2, 3]);
+								// => [2, 3]
+
+								_.drop([1, 2, 3], 2);
+								// => [3]
+
+								_.drop([1, 2, 3], 5);
+								// => []
+
+								_.drop([1, 2, 3], 0);
+								// => [1, 2, 3]
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						Collection:
+						<br>Iterating, sorting, filtering, splitting, and building.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>countBy</li>
+							<li>filter</li>
+						</ul>
+					</section>
+					<section>
+						CountBy:<br>
+						Creates an object composed of keys generated from the results of running each element of collection thru iteratee. The corresponding value of each key is the number of times the key was returned by iteratee. The iteratee is invoked with one argument: (value).
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_.countBy([6.1, 4.2, 6.3], Math.floor);
+								// => { '4': 1, '6': 2 }
+
+								// The `_.property` iteratee shorthand.
+								_.countBy(['one', 'two', 'three'], 'length');
+								// => { '3': 2, '5': 1 }
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Filter:<br>
+						Iterates over elements of collection, returning an array of all elements predicate returns truthy for. The predicate is invoked with three arguments: (value, index|key, collection).
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								var users = [
+								  { 'user': 'barney', 'age': 36, 'active': true },
+								  { 'user': 'fred',   'age': 40, 'active': false }
+								];
+
+								_.filter(users, function(o) { return !o.active; });
+								// => objects for ['fred']
+
+								// The `_.matches` iteratee shorthand.
+								_.filter(users, { 'age': 36, 'active': true });
+								// => objects for ['barney']
+
+								// The `_.matchesProperty` iteratee shorthand.
+								_.filter(users, ['active', false]);
+								// => objects for ['fred']
+
+								// The `_.property` iteratee shorthand.
+								_.filter(users, 'active');
+								// => objects for ['barney']
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						Object:
+						<br>Accessing, extending, merging, defaults, and transforming.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>assign</li>
+							<li>create</li>
+						</ul>
+					</section>
+					<section>
+						Assign:<br>
+						Assigns own enumerable string keyed properties of source objects to the destination object. Source objects are applied from left to right. Subsequent sources overwrite property assignments of previous sources.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								function Foo() {
+									this.a = 1;
+								}
+								 
+								function Bar() {
+									this.c = 3;
+								}
+								 
+								Foo.prototype.b = 2;
+								Bar.prototype.d = 4;
+								 
+								_.assign({ 'a': 0 }, new Foo, new Bar);
+								// => { 'a': 1, 'c': 3 }
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Create:<br>
+						Creates an object that inherits from the prototype object. If a properties object is given, its own enumerable string keyed properties are assigned to the created object.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								function Shape() {
+									this.x = 0;
+									this.y = 0;
+								}
+								 
+								function Circle() {
+									Shape.call(this);
+								}
+								 
+								Circle.prototype = _.create(Shape.prototype, {
+									'constructor': Circle
+								});
+								 
+								var circle = new Circle;
+								circle instanceof Circle;
+								// => true
+								 
+								circle instanceof Shape;
+								// => true
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>
+					<section>
+						Seq:
+						<br>Chaining, wrapping, filtering, and testing.
+					</section>
+					<section>
+						For exaple:<br>
+						<ul>
+							<li>chain</li>
+							<li>tap</li>
+						</ul>
+					</section>
+					<section>
+						Chain:<br>
+						Creates a lodash wrapper instance that wraps value with explicit method chain sequences enabled. The result of such sequences must be unwrapped with _#value.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								var users = [
+								  { 'user': 'barney',  'age': 36 },
+								  { 'user': 'fred',    'age': 40 },
+								  { 'user': 'pebbles', 'age': 1 }
+								];
+
+								var youngest = _
+								  .chain(users)
+								  .sortBy('age')
+								  .map(function(o) {
+								    return o.user + ' is ' + o.age;
+								  })
+								  .head()
+								  .value();
+								// => 'pebbles is 1'
+								```
+							</textarea>
+						</section>
+					</section>
+					<section>
+						Tap:<br>
+						This method invokes interceptor and returns value. The interceptor is invoked with one argument; (value). The purpose of this method is to "tap into" a method chain sequence in order to modify intermediate results.
+						<br><br>Example:
+						<section data-markdown>
+							<textarea data-template>
+								```
+								_([1, 2, 3])
+								 .tap(function(array) {
+								// Mutate input array.
+								   array.pop();
+								 })
+								 .reverse()
+								 .value();
+								// => [2, 1]
+								```
+							</textarea>
+						</section>
+					</section>
+				</section>
+				<section>Thank you</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
